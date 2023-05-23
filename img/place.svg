@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 32 32"
+	style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+	<g>
+		<g data-name="Layer 18">
+			<path
+				d="M28.53 8.15a1 1 0 0 0-1-.05l-2.05 1a1 1 0 0 0-.48.9 1 1 0 0 0 1 1 1 1 0 0 0 .52-.14l.53-.27v13.79l-6 3V21a1 1 0 0 0-2 0v6.38l-6-3V21a1 1 0 0 0-2 0v3.38l-6 3V13.62l1.85-.93a1 1 0 1 0-.9-1.78l-2.4 1.2A1 1 0 0 0 3 13v16a1 1 0 0 0 .47.85A1 1 0 0 0 4 30a1 1 0 0 0 .45-.11L12 26.12l7.55 3.77a1 1 0 0 0 .9 0l8-4A1 1 0 0 0 29 25V9a1 1 0 0 0-.47-.85Z"
+				fill="#ffffff" data-original="#000000" class=""></path>
+			<path d="M19 9a3 3 0 1 0-3 3 3 3 0 0 0 3-3Zm-4 0a1 1 0 1 1 1 1 1 1 0 0 1-1-1Z" fill="#ffffff"
+				data-original="#000000" class=""></path>
+			<path
+				d="M15.36 20.77a1 1 0 0 0 1.28 0C16.9 20.55 23 15.4 23 9A7 7 0 0 0 9 9c0 6.4 6.1 11.55 6.36 11.77ZM16 4a5 5 0 0 1 5 5c0 4.33-3.52 8.21-5 9.64-1.48-1.43-5-5.3-5-9.64a5 5 0 0 1 5-5Z"
+				fill="#ffffff" data-original="#000000" class=""></path>
+		</g>
+	</g>
+</svg>
