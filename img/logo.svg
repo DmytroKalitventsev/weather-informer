@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+	style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+	<g>
+		<path
+			d="M407 512H105C47.103 512 0 464.897 0 407V105C0 47.103 47.103 0 105 0h302c57.897 0 105 47.103 105 105v302c0 57.897-47.103 105-105 105z"
+			style="" fill="#00c0e5" data-original="#00c3ff" class=""></path>
+		<path d="M407 0H256v512h151c57.897 0 105-47.103 105-105V105C512 47.103 464.897 0 407 0z" style="" fill="#00aaf0"
+			data-original="#00aaf0" class=""></path>
+		<circle cx="166" cy="211" r="80" style="" fill="#ffea84" data-original="#ffea84"></circle>
+		<path
+			d="M356 241a59.817 59.817 0 0 0-21.599 4.023C326.997 208.496 294.711 181 256 181c-44.183 0-80 35.817-80 80 0 3.718.274 7.37.765 10.952C156.343 276.213 141 294.313 141 316c0 24.853 20.147 45 45 45h170c33.137 0 60-26.863 60-60s-26.863-60-60-60z"
+			style="" fill="#ffffff" data-original="#ffffff"></path>
+		<path
+			d="M356 241a59.817 59.817 0 0 0-21.599 4.023C326.997 208.496 294.711 181 256 181v180h100c33.137 0 60-26.863 60-60s-26.863-60-60-60z"
+			style="" fill="#f2f2f2" data-original="#f2f2f2" class=""></path>
+	</g>
+</svg>
