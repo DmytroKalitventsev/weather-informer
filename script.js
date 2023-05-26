@@ -93,32 +93,35 @@ class Weather {
 	}
 
 	getAdditionalWeatherInfo() {
-		console.dir(this.#json);
+		const windSpeed = this.#json.wind.speed;
+		const clouds = this.#json.clouds.all;
+		const rain = this.#json.rain['1h'];
+		const humidity = this.#json.main.humidity;
 
 		const additionalInfo = `<li class="weather-additional__item">
-							<div class="weather-additional__icon">
-								<img src="img/wind.svg" alt="wind">
-							</div>
-							<span>10 км/ч</span>
-						</li>
-						<li class="weather-additional__item">
-							<div class="weather-additional__icon">
-								<img src="img/wind.svg" alt="wind">
-							</div>
-							<span>10 км/ч</span>
-						</li>
-						<li class="weather-additional__item">
-							<div class="weather-additional__icon">
-								<img src="img/wind.svg" alt="wind">
-							</div>
-							<span>10 км/ч</span>
-						</li>
-						<li class="weather-additional__item">
-							<div class="weather-additional__icon">
-								<img src="img/wind.svg" alt="wind">
-							</div>
-							<span>10 км/ч</span>
-						</li>`;
+									<div class="weather-additional__icon">
+										<img src="img/wind.svg" alt="wind">
+									</div>
+									<span>Вітер: ${windSpeed} м/сек</span>
+								</li>
+								<li class="weather-additional__item">
+									<div class="weather-additional__icon">
+										<img src="img/wind.svg" alt="wind">
+									</div>
+									<span>Хмарність: ${clouds}%</span>
+								</li>
+								<li class="weather-additional__item">
+									<div class="weather-additional__icon">
+										<img src="img/wind.svg" alt="wind">
+									</div>
+									<span>Опади: ${rain} мм</span>
+								</li>
+								<li class="weather-additional__item">
+									<div class="weather-additional__icon">
+										<img src="img/wind.svg" alt="wind">
+									</div>
+									<span>Вологість: ${humidity}%</span>
+								</li>`;
 
 		this.weatherAdditionalWrap.insertAdjacentHTML('beforeEnd', additionalInfo);
 	}
