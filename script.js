@@ -191,7 +191,7 @@ class Weather {
 	}
 
 	showCitiesList(e) {
-		if (e.target.matches('.weather-cities__button img')) {
+		if (e.target.closest('.weather-cities__button')) {
 			this.citiesListWrap.classList.toggle('active');
 		} else {
 			this.citiesListWrap.classList.remove('active');
@@ -202,9 +202,10 @@ class Weather {
 		this.getRequest(this.cities[0].id, () => this.initWeather(this.#nameCity));
 		this.getCurrentDate();
 		this.renderCities();
-		document.addEventListener('click', this.showCitiesList.bind(this));
+		document.addEventListener('click', this.showCitiesList.bind(this), false);
 		this.citiesListWrap.addEventListener('click', this.getDetailWeather.bind(this), false);
 	}
 }
 
 new Weather().init();
+

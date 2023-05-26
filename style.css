@@ -50,7 +50,7 @@ img {
 .weather {
 	display: grid;
 	grid-template: repeat(3, auto) / repeat(3, 1fr);
-	row-gap: .75rem;
+	row-gap: 1rem;
 	box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 1);
 	padding: 1rem;
 	border-radius: 10px;
@@ -181,7 +181,7 @@ img {
 
 @media (max-width: 540px) {
 	.weather-cities__list {
-		bottom: -59%;
+		bottom: -58%;
 	}
 }
 
@@ -189,7 +189,7 @@ img {
 	.weather-cities__list {
 		grid-template: repeat(2, auto) / repeat(2, 1fr);
 		column-gap: initial;
-		bottom: -114%;
+		bottom: -101%;
 	}
 }
 
@@ -243,6 +243,12 @@ img {
 	grid-template-columns: repeat(2, auto);
 	align-items: center;
 	column-gap: .5rem;
+}
+
+@media (max-width: 350px) {
+	.weather-additional__item {
+		max-width: 96px;
+	}
 }
 
 .weather-additional__icon {
