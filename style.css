@@ -58,7 +58,7 @@ img {
 
 @media (max-width: 520px) {
 	.weather {
-		grid-template: repeat(5, auto) / repeat(2, 1fr);
+		grid-template: repeat(4, auto) / repeat(2, 1fr);
 	}
 }
 
@@ -101,7 +101,19 @@ img {
 	column-gap: .5rem;
 	grid-row: 3 / 3;
 	grid-column: 1 / 1;
-	margin-top: 5px;
+	margin-top: 10px;
+}
+
+@media (max-width: 520px) {
+	.weather-temperature {
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 435px) {
+	.weather-temperature {
+		margin-top: initial;
+	}
 }
 
 .weather-temperature__icon {
@@ -118,7 +130,7 @@ img {
 }
 
 .weather-temperature__feels {
-	max-width: 100px;
+	max-width: 6.5rem;
 	line-height: 1.2;
 }
 
@@ -161,7 +173,7 @@ img {
 	justify-items: center;
 	column-gap: .5rem;
 	position: absolute;
-	bottom: -80%;
+	bottom: -74%;
 	left: 15px;
 	width: calc(100% - 30px);
 	padding: 1rem .5rem;
@@ -182,6 +194,12 @@ img {
 	transform: translateY(0px);
 }
 
+@media (max-width: 640px) {
+	.weather-cities__list {
+		bottom: -72%;
+	}
+}
+
 @media (max-width: 520px) {
 	.weather-cities__list {
 		bottom: -58%;
@@ -192,22 +210,14 @@ img {
 	.weather-cities__list {
 		grid-template: repeat(2, auto) / repeat(2, 1fr);
 		column-gap: initial;
-		row-gap: .5rem;
-		bottom: -108%;
+		bottom: -114%;
 	}
 }
 
 .weather-cities__item {
 	display: grid;
 	justify-items: center;
-	row-gap: .5rem;
 	cursor: pointer;
-}
-
-@media (max-width: 350px) {
-	.weather-cities__item {
-		row-gap: .2rem;
-	}
 }
 
 .weather-cities__picture {
@@ -227,6 +237,7 @@ img {
 }
 
 .weather-cities__name {
+	margin-top: 5px;
 	font-weight: 300;
 }
 
@@ -235,15 +246,15 @@ img {
 	grid-template-rows: repeat(4, auto);
 	align-items: end;
 	justify-items: start;
-	row-gap: 5px;
+	gap: 5px;
 	grid-row: 2 / 4;
 	grid-column: 3 / 3;
 }
 
 @media (max-width: 520px) {
 	.weather-additional {
-		grid-template-columns: repeat(2, 1fr);
-		grid-row: 5 / 5;
+		grid-template: repeat(2, auto) / repeat(2, 1fr);
+		grid-row: 4 / 4;
 		grid-column: 1 / 3;
 	}
 }

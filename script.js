@@ -106,19 +106,19 @@ class Weather {
 								</li>
 								<li class="weather-additional__item">
 									<div class="weather-additional__icon">
-										<img src="img/wind.svg" alt="wind">
+										<img src="img/cloud.svg" alt="wind">
 									</div>
 									<span>Хмарність: ${clouds}%</span>
 								</li>
 								<li class="weather-additional__item">
 									<div class="weather-additional__icon">
-										<img src="img/wind.svg" alt="wind">
+										<img src="img/precipitation.svg" alt="wind">
 									</div>
 									<span>Опади: ${rain} мм</span>
 								</li>
 								<li class="weather-additional__item">
 									<div class="weather-additional__icon">
-										<img src="img/wind.svg" alt="wind">
+										<img src="img/humidity.svg" alt="wind">
 									</div>
 									<span>Вологість: ${humidity}%</span>
 								</li>`;
