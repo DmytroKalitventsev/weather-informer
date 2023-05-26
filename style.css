@@ -9,12 +9,12 @@
 :root {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
-	line-height: 1;
+	line-height: 1.1;
 	color: #fff;
 	font-weight: 400;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 670px) {
 	:root {
 		font-size: 16px;
 	}
@@ -49,14 +49,14 @@ img {
 
 .weather {
 	display: grid;
-	grid-template: repeat(3, auto) / auto 1fr auto;
+	grid-template: repeat(3, auto) / repeat(3, 1fr);
 	row-gap: .75rem;
 	box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 1);
 	padding: 1rem;
 	border-radius: 10px;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
 	.weather {
 		grid-template: repeat(4, auto) / repeat(2, 1fr);
 	}
@@ -101,19 +101,6 @@ img {
 	column-gap: .5rem;
 	grid-row: 3 / 3;
 	grid-column: 1 / 1;
-	margin-top: 10px;
-}
-
-@media (max-width: 520px) {
-	.weather-temperature {
-		margin-top: 5px;
-	}
-}
-
-@media (max-width: 435px) {
-	.weather-temperature {
-		margin-top: initial;
-	}
 }
 
 .weather-temperature__icon {
@@ -127,19 +114,16 @@ img {
 .weather-temperature__degrees {
 	font-size: 3rem;
 	font-weight: 500;
-}
-
-.weather-temperature__feels {
-	max-width: 6.5rem;
-	line-height: 1.2;
+	line-height: 1;
 }
 
 .weather-picture {
 	display: grid;
-	justify-content: center;
 	justify-items: center;
+	align-content: space-between;
 	grid-row: 1 / 4;
 	grid-column: 2 / 2;
+	justify-self: flex-start;
 }
 
 .weather-picture__icon {
@@ -155,7 +139,7 @@ img {
 	grid-column: 3 / 3;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
 	.weather-cities {
 		grid-row: 1 / 1;
 		grid-column: 2 / 2;
@@ -173,7 +157,7 @@ img {
 	justify-items: center;
 	column-gap: .5rem;
 	position: absolute;
-	bottom: -74%;
+	bottom: -76%;
 	left: 15px;
 	width: calc(100% - 30px);
 	padding: 1rem .5rem;
@@ -194,15 +178,10 @@ img {
 	transform: translateY(0px);
 }
 
-@media (max-width: 640px) {
-	.weather-cities__list {
-		bottom: -72%;
-	}
-}
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
 	.weather-cities__list {
-		bottom: -58%;
+		bottom: -59%;
 	}
 }
 
@@ -246,12 +225,12 @@ img {
 	grid-template-rows: repeat(4, auto);
 	align-items: end;
 	justify-items: start;
-	gap: 5px;
+	gap: .5rem;
 	grid-row: 2 / 4;
 	grid-column: 3 / 3;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
 	.weather-additional {
 		grid-template: repeat(2, auto) / repeat(2, 1fr);
 		grid-row: 4 / 4;
@@ -264,12 +243,6 @@ img {
 	grid-template-columns: repeat(2, auto);
 	align-items: center;
 	column-gap: .5rem;
-}
-
-@media (max-width: 520px) {
-	.weather-additional__item:nth-child(even) {
-		justify-self: center;
-	}
 }
 
 .weather-additional__icon {

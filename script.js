@@ -4,6 +4,7 @@ class Weather {
 	#url = 'https://api.openweathermap.org';
 	#apiId = 'aca1888765eac88dd6aba8b4a07a1ab8';
 	#json = null;
+	#nameCity = this.cities[0].name;
 
 	constructor() { }
 
@@ -37,8 +38,16 @@ class Weather {
 
 	get pictureWeather() {
 		const weather = this.#json.weather[0];
-		
+
 		return (weather.id >= 701 && weather.id <= 781) ? 'atmosphere' : weather.main.toLowerCase();
+	}
+
+	get mainInfo() {
+		return this.#json.main;
+	}
+
+	get currentTemp() {
+		return Math.floor(this.mainInfo.temp);
 	}
 
 	get cities() {
@@ -50,20 +59,17 @@ class Weather {
 		];
 	}
 
-	getWeather() {
+	getRequest(idCity, callback) {
 		const request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
 
-		request.open('GET', `${this.#url}/data/2.5/weather?id=696643&appid=${this.#apiId}&units=metric&lang=ua`);
+		request.open('GET', `${this.#url}/data/2.5/weather?id=${idCity}&appid=${this.#apiId}&units=metric&lang=ua`);
 		request.responseType = 'json';
 
 		request.addEventListener('readystatechange', () => {
 			if (request.readyState === 4 && request.status === 200) {
 				this.#json = request.response;
 
-				this.cityWrap.innerText = this.#json.name
-				this.getTemperature();
-				this.getPictureWeather();
-				this.getAdditionalWeatherInfo();
+				callback();
 			}
 
 			if (request.readyState < 4 && request.status >= 400) {
@@ -74,16 +80,39 @@ class Weather {
 		request.send();
 	}
 
-	getTemperature() {
-		const main = this.#json.main;
+	getDetailWeather(e) {
+		const t = e.target.closest('.weather-cities__item');
 
-		const temperatureInfo = `<span class="weather-temperature__degrees">${Math.floor(main.temp)}&#176;</span>
-								<span class="weather-temperature__feels">Відчувається як ${Math.floor(main.feels_like)}&#176;</span>`;
+		if (t) {
+			const idCity = t.dataset.id;
+			this.#nameCity = t.lastElementChild.innerText;
+
+			this.getRequest(idCity, () => this.initWeather(this.#nameCity));
+		}
+	}
+
+	initWeather(nameCity) {
+		this.cityWrap.innerText = nameCity;
+		this.getTemperature();
+		this.getPictureWeather();
+		this.getAdditionalWeatherInfo();
+	}
+
+	getTemperature() {
+		this.temperatureWrap.innerHTML = '';
+
+		const temperatureInfo = `<div class="weather-temperature__icon">
+									<img src="img/temperature.svg" alt="temp">
+								</div>
+								<span class="weather-temperature__degrees">${this.currentTemp}&#176;</span>
+								<span>Відчувається <br> як ${Math.floor(this.mainInfo.feels_like)}&#176;</span>`;
 
 		this.temperatureWrap.insertAdjacentHTML('beforeEnd', temperatureInfo);
 	}
 
 	getPictureWeather() {
+		this.weatherPictureWrap.innerHTML = '';
+
 		const pictureAndDescr = `<div class="weather-picture__icon">
 									<img src="img//weather/${this.pictureWeather}.svg" alt="weather">
 								</div>
@@ -92,11 +121,31 @@ class Weather {
 		this.weatherPictureWrap.insertAdjacentHTML('beforeEnd', pictureAndDescr);
 	}
 
+	renderCities() {
+		this.cities.forEach(city => {
+			this.getRequest(city.id, () => {
+				const cityItem = `<li class="weather-cities__item" data-id="${city.id}">
+										<div class="weather-cities__picture">
+											<img src="img/weather/${this.pictureWeather}.svg" alt="pic">
+										</div>
+										<span class="weather-cities__degrees">${this.currentTemp}&#176;</span>
+										<span class="weather-cities__name">${city.name}</span>
+									</li>`;
+
+				this.citiesListWrap.insertAdjacentHTML('beforeEnd', cityItem);
+			});
+		});
+
+		this.citiesListWrap.previousElementSibling.style.cursor = 'pointer';
+	}
+
 	getAdditionalWeatherInfo() {
+		this.weatherAdditionalWrap.innerHTML = '';
+
 		const windSpeed = this.#json.wind.speed;
 		const clouds = this.#json.clouds.all;
-		const rain = this.#json.rain['1h'];
-		const humidity = this.#json.main.humidity;
+		const rain = (this.#json.rain) ? this.#json.rain['1h'] + ' мм' : 'відсутні';
+		const humidity = this.mainInfo.humidity;
 
 		const additionalInfo = `<li class="weather-additional__item">
 									<div class="weather-additional__icon">
@@ -114,7 +163,7 @@ class Weather {
 									<div class="weather-additional__icon">
 										<img src="img/precipitation.svg" alt="wind">
 									</div>
-									<span>Опади: ${rain} мм</span>
+									<span>Опади: ${rain}</span>
 								</li>
 								<li class="weather-additional__item">
 									<div class="weather-additional__icon">
@@ -124,23 +173,6 @@ class Weather {
 								</li>`;
 
 		this.weatherAdditionalWrap.insertAdjacentHTML('beforeEnd', additionalInfo);
-	}
-
-	renderCities() {
-		const cities = this.cities
-			.map(city => {
-				return `<li class="weather-cities__item" data-id="${city.id}">
-							<div class="weather-cities__picture">
-								<img src="img/weather/clear.svg" alt="pic">
-							</div>
-							<span class="weather-cities__degrees">+25&#176;</span>
-							<span class="weather-cities__name">${city.name}</span>
-						</li>`;
-			})
-			.join('');
-
-		this.citiesListWrap.insertAdjacentHTML('beforeEnd', cities);
-		this.citiesListWrap.previousElementSibling.style.cursor = 'pointer';
 	}
 
 	getCurrentDate() {
@@ -161,21 +193,17 @@ class Weather {
 	showCitiesList(e) {
 		if (e.target.matches('.weather-cities__button img')) {
 			this.citiesListWrap.classList.toggle('active');
-		}
-	}
-
-	hideCitiesList(e) {
-		if (!e.target.matches('.weather-cities__button img')) {
+		} else {
 			this.citiesListWrap.classList.remove('active');
 		}
 	}
 
 	init() {
-		this.getWeather();
+		this.getRequest(this.cities[0].id, () => this.initWeather(this.#nameCity));
 		this.getCurrentDate();
 		this.renderCities();
-		this.wrap.addEventListener('click', this.showCitiesList.bind(this));
-		document.addEventListener('click', this.hideCitiesList.bind(this));
+		document.addEventListener('click', this.showCitiesList.bind(this));
+		this.citiesListWrap.addEventListener('click', this.getDetailWeather.bind(this), false);
 	}
 }
 
