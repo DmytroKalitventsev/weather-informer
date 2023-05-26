@@ -42,7 +42,7 @@ img {
 
 .wrapper {
 	position: relative;
-	max-width: 800px;
+	max-width: 750px;
 	margin: 20px auto;
 	padding: 0 15px;
 }
@@ -189,7 +189,7 @@ img {
 
 @media (max-width: 520px) {
 	.weather-cities__list {
-		bottom: -60%;
+		bottom: -58%;
 	}
 }
 
