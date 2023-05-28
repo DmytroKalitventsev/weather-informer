@@ -144,7 +144,7 @@ class Weather {
 
 		const windSpeed = this.#json.wind.speed.toFixed(1);
 		const clouds = this.#json.clouds.all;
-		const rain = (this.#json.rain) ? this.#json.rain['1h'].toFixed(1) + ' мм' : 'відсутні';
+		const rain = (this.#json.rain) ? this.#json.rain['1h'].toFixed(1) : 0;
 		const humidity = this.mainInfo.humidity;
 
 		const additionalInfo = `<li class="weather-additional__item">
@@ -163,7 +163,7 @@ class Weather {
 									<div class="weather-additional__icon">
 										<img src="img/precipitation.svg" alt="wind">
 									</div>
-									<span>Опади: ${rain}</span>
+									<span>Опади: ${rain} мм</span>
 								</li>
 								<li class="weather-additional__item">
 									<div class="weather-additional__icon">
