@@ -142,9 +142,9 @@ class Weather {
 	getAdditionalWeatherInfo() {
 		this.weatherAdditionalWrap.innerHTML = '';
 
-		const windSpeed = this.#json.wind.speed;
+		const windSpeed = this.#json.wind.speed.toFixed(1);
 		const clouds = this.#json.clouds.all;
-		const rain = (this.#json.rain) ? this.#json.rain['1h'] + ' мм' : 'відсутні';
+		const rain = (this.#json.rain) ? this.#json.rain['1h'].toFixed(1) + ' мм' : 'відсутні';
 		const humidity = this.mainInfo.humidity;
 
 		const additionalInfo = `<li class="weather-additional__item">
@@ -177,7 +177,7 @@ class Weather {
 
 	getCurrentDate() {
 		const nameMonths = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
-		const daysWeek = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
+		const daysWeek = ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота'];
 		const date = new Date();
 
 		const day = date.getDate().toString().padStart(2, '0');
@@ -185,7 +185,7 @@ class Weather {
 		const weekday = date.getDay();
 
 		const currentDate = `<span>${nameMonths[month]} ${day}</span>
-							<span>${daysWeek[weekday - 1]}</span>`;
+							<span>${daysWeek[weekday]}</span>`;
 
 		this.dateWrap.insertAdjacentHTML('beforeEnd', currentDate);
 	}
