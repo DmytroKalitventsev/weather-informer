@@ -47,7 +47,7 @@ class Weather {
 	}
 
 	get currentTemp() {
-		return Math.floor(this.mainInfo.temp);
+		return Math.round(this.mainInfo.temp);
 	}
 
 	get cities() {
@@ -105,7 +105,7 @@ class Weather {
 									<img src="img/temperature.svg" alt="temp">
 								</div>
 								<span class="weather-temperature__degrees">${this.currentTemp}&#176;</span>
-								<span>Відчувається <br> як ${Math.floor(this.mainInfo.feels_like)}&#176;</span>`;
+								<span>Відчувається <br> як ${Math.round(this.mainInfo.feels_like)}&#176;</span>`;
 
 		this.temperatureWrap.insertAdjacentHTML('beforeEnd', temperatureInfo);
 	}
