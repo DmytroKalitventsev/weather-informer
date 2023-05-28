@@ -4,7 +4,7 @@ class Weather {
 	#url = 'https://api.openweathermap.org';
 	#apiId = 'aca1888765eac88dd6aba8b4a07a1ab8';
 	#json = null;
-	#nameCity = this.cities[0].name;
+	#currentCity = this.cities[0].name;
 
 	constructor() { }
 
@@ -85,9 +85,9 @@ class Weather {
 
 		if (t) {
 			const idCity = t.dataset.id;
-			this.#nameCity = t.lastElementChild.innerText;
+			this.#currentCity = t.lastElementChild.innerText;
 
-			this.getRequest(idCity, () => this.initWeather(this.#nameCity));
+			this.getRequest(idCity, () => this.initWeather(this.#currentCity));
 		}
 	}
 
@@ -199,7 +199,7 @@ class Weather {
 	}
 
 	init() {
-		this.getRequest(this.cities[0].id, () => this.initWeather(this.#nameCity));
+		this.getRequest(this.cities[0].id, () => this.initWeather(this.#currentCity));
 		this.getCurrentDate();
 		this.renderCities();
 		document.addEventListener('click', this.showCitiesList.bind(this), false);
