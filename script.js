@@ -66,14 +66,14 @@ class Weather {
 		request.responseType = 'json';
 
 		request.addEventListener('readystatechange', () => {
+			if (request.readyState < 4 && request.status >= 400) {
+				document.body.innerHTML = `<div class="error">${request.statusText} :(</div>`;
+			}
+
 			if (request.readyState === 4 && request.status === 200) {
 				this.#json = request.response;
 
 				callback();
-			}
-
-			if (request.readyState < 4 && request.status >= 400) {
-				console.error('Помилка даних');
 			}
 		});
 
@@ -202,6 +202,7 @@ class Weather {
 		this.getRequest(this.cities[0].id, () => this.initWeather(this.#currentCity));
 		this.getCurrentDate();
 		this.renderCities();
+
 		document.addEventListener('click', this.showCitiesList.bind(this), false);
 		this.citiesListWrap.addEventListener('click', this.getDetailWeather.bind(this), false);
 	}
